@@ -1,0 +1,38 @@
+name: 'Private Packagist Artifact Publishing'
+description: 'GitHub Action to publish artifacts as package versions to Private Packagist'
+
+author: Packagist Conductors GmbH <contact@packagist.com>
+
+inputs:
+  package_name:
+    description: The name of the package that will be published.
+    required: true
+  organization_url_name:
+    description: The URL name of your Private Packagist organization.
+    required: true
+  private_packagist_url:
+    description: The URL to the Private Packagist installation
+    default: 'https://packagist.com'
+    required: false
+  artifact:
+    description: Full path to the artifact file to publish.
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set Release version
+      shell: "bash"
+      run: echo "ACTION_DIR=${GITHUB_ACTION_PATH}" >> $GITHUB_ENV
+
+    - name: "Validate PHP version"
+      shell: "bash"
+      run: "${{ env.ACTION_DIR }}/bin/php_version_check.sh 7.2.5"
+
+    - name: Install dependencies
+      uses: ramsey/composer-install@3cf229dc2919194e9e36783941438d17239e8520 # 3.1.1
+      with:
+        working-directory: "${{ env.ACTION_DIR }}"
+
+    - name: Publish
+      shell: "bash"
+      run: 'php ${{ env.ACTION_DIR }}/bin/publish.php "${{ inputs.package_name }}" "${{ inputs.artifact }}" "${{ inputs.organization_url_name }}" "${{ inputs.private_packagist_url }}"'
