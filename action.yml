@@ -20,7 +20,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Set Release version
+    - name: Store GITHUB_ACTION_PATH
       shell: "bash"
       run: echo "ACTION_DIR=${GITHUB_ACTION_PATH}" >> $GITHUB_ENV
 
