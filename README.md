@@ -4,15 +4,14 @@ GitHub Action to publish artifacts as package versions to Private Packagist.
 
 ## Dependencies
 
-[PHP](https://www.php.net) and [Composer](https://getcomposer.org) are required and can be setup using the
-[Setup PHP GitHub Action](https://github.com/shivammathur/setup-php).
+[PHP](https://www.php.net) and [Composer](https://getcomposer.org) are required but will automatically be set up using the
+[Setup PHP GitHub Action](https://github.com/shivammathur/setup-php) if not available.
 
 Supported are PHP >= 7.2 and Composer >= 2.
 
 ## Usage
 
-The GitHub Action can then be used as a step within a job e.g. on tag push. Make sure that PHP and Composer are available and
-create your artifact file before the publish artifact step.
+The GitHub Action can then be used as a step within a job e.g. on tag push. Create your artifact file before the publish artifact step.
 
 ```yaml
 jobs:
@@ -22,11 +21,6 @@ jobs:
 
         steps:
             - uses: actions/checkout@v4
-
-            - name: Install PHP
-              uses: "shivammathur/setup-php@v2"
-              with:
-                  php-version: "latest"
 
             # Create your artifact file here
 

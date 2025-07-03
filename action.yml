@@ -24,14 +24,25 @@ runs:
       shell: "bash"
       run: echo "ACTION_DIR=${GITHUB_ACTION_PATH}" >> $GITHUB_ENV
 
+    - name: "Check if PHP is installed"
+      shell: "bash"
+      run: command -v $(which php) 2>&1 >/dev/null && echo "PHP_INSTALLED=yes" >> $GITHUB_ENV || echo "PHP_INSTALLED=no" >> $GITHUB_ENV
+
     - name: "Validate PHP version"
       shell: "bash"
       run: "${{ env.ACTION_DIR }}/bin/php_version_check.sh 7.2.5"
+      if: ${{ env.PHP_INSTALLED == 'yes' }}
+
+    - name: Install PHP
+      uses: shivammathur/setup-php@0f7f1d08e3e32076e51cae65eb0b0c871405b16e # 2.34.1
+      if: ${{ env.PHP_INSTALLED == 'no' }}
+      with:
+        php-version: "8.4"
 
     - name: Install dependencies
       uses: ramsey/composer-install@3cf229dc2919194e9e36783941438d17239e8520 # 3.1.1
       with:
-        working-directory: "${{ env.ACTION_DIR }}"
+        working-directory: "${{ env.ACTION_DIR }}" # Cannot use ${GITHUB_ACTION_PATH} here because it resolves to the action dir of ramsey/composer-install
 
     - name: Publish
       shell: "bash"
