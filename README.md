@@ -1,5 +1,6 @@
 # packagist/publish-artifact-github-action
 
+GitHub Action to publish artifacts as package versions to Private Packagist.
 
 ## Dependencies
 
@@ -10,7 +11,8 @@ Supported are PHP >= 7.2 and Composer >= 2.
 
 ## Usage
 
-Create your artifact file before the publish artifact step.
+The GitHub Action can then be used as a step within a job e.g. on tag push. Make sure that PHP and Composer are available and
+create your artifact file before the publish artifact step.
 
 ```yaml
 jobs:
@@ -26,7 +28,7 @@ jobs:
               with:
                   php-version: "latest"
 
-            # Create your artifact file
+            # Create your artifact file here
 
             - name: "Publish artifact"
               uses: packagist/publish-artifact-github-action
