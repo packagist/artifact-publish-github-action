@@ -12,12 +12,13 @@ if (5 !== $argc) {
 }
 
 $packageName = $argv[1];
-$fileName = $argv[2];
+$fileNameWithPath = $argv[2];
 $organizationUrlName = $argv[3];
 $privatePackagistUrl = $argv[4];
+$fileName = basename($fileNameWithPath);
 
-if (!file_exists($fileName)) {
-    throw new \RuntimeException('File not found: ' . $fileName);
+if (!file_exists($fileNameWithPath)) {
+    throw new \RuntimeException('File not found: ' . $fileNameWithPath);
 }
 
 $client = new Client(null, $privatePackagistUrl);
@@ -27,8 +28,8 @@ if (isset($_SERVER['PRIVATE_PACKAGIST_API_KEY']) && isset($_SERVER['PRIVATE_PACK
 }
 
 try {
-    $file = file_get_contents($fileName);
-    $contentType = MimeTypes::getDefault()->guessMimeType($fileName);
+    $file = file_get_contents($fileNameWithPath);
+    $contentType = MimeTypes::getDefault()->guessMimeType($fileNameWithPath);
 
     try {
         $client->packages()->artifacts()->add($packageName, $file, $contentType, $fileName);
