@@ -1,8 +1,12 @@
 <?php
 
+use Http\Client\Common\Plugin\LoggerPlugin;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use PrivatePackagist\ApiClient\Client;
 use PrivatePackagist\ApiClient\Exception\HttpTransportException;
 use PrivatePackagist\ApiClient\Exception\ResourceNotFoundException;
+use PrivatePackagist\ApiClient\HttpClient\HttpPluginClientBuilder;
 use Symfony\Component\Mime\MimeTypes;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -21,7 +25,11 @@ if (!file_exists($fileNameWithPath)) {
     throw new \RuntimeException('File not found: ' . $fileNameWithPath);
 }
 
-$client = new Client(null, $privatePackagistUrl);
+$logger = new Logger('trusted-publishing');
+$logger->pushHandler(new StreamHandler('php://stdout', Logger::DEBUG));
+$httpClientBuilder = new HttpPluginClientBuilder();
+$httpClientBuilder->addPlugin(new LoggerPlugin($logger));
+$client = new Client(null, $privatePackagistUrl, null, $logger);
 
 if (isset($_SERVER['PRIVATE_PACKAGIST_API_KEY']) && isset($_SERVER['PRIVATE_PACKAGIST_API_SECRET'])) {
     $client->authenticate($_SERVER['PRIVATE_PACKAGIST_API_KEY'], $_SERVER['PRIVATE_PACKAGIST_API_SECRET']);
