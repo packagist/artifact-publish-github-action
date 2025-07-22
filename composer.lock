@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "689a5951abf8856c8db0eea0f2ce1bc1",
+    "content-hash": "e202999e3988e52cbfe22cde6cb8c8dc",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -533,16 +533,16 @@
         },
         {
             "name": "private-packagist/api-client",
-            "version": "1.38.0",
+            "version": "dev-push-znvyqqxyvqwv",
             "source": {
                 "type": "git",
                 "url": "https://github.com/packagist/private-packagist-api-client.git",
-                "reference": "e389d73ab07e24acd50dcb6ca5adeb7913bb0b22"
+                "reference": "525bc00d1412043e42d2286b3f7020836a4f664b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/packagist/private-packagist-api-client/zipball/e389d73ab07e24acd50dcb6ca5adeb7913bb0b22",
-                "reference": "e389d73ab07e24acd50dcb6ca5adeb7913bb0b22",
+                "url": "https://api.github.com/repos/packagist/private-packagist-api-client/zipball/525bc00d1412043e42d2286b3f7020836a4f664b",
+                "reference": "525bc00d1412043e42d2286b3f7020836a4f664b",
                 "shasum": ""
             },
             "require": {
@@ -552,6 +552,7 @@
                 "php-http/client-common": "^1.9 || ^2.0",
                 "php-http/discovery": "^1.0",
                 "php-http/message-factory": "^1.0",
+                "private-packagist/oidc-identities": "dev-main",
                 "psr/http-client-implementation": "^1.0",
                 "psr/http-message-implementation": "^1.0"
             },
@@ -586,9 +587,64 @@
             ],
             "support": {
                 "issues": "https://github.com/packagist/private-packagist-api-client/issues",
-                "source": "https://github.com/packagist/private-packagist-api-client/tree/1.38.0"
+                "source": "https://github.com/packagist/private-packagist-api-client/tree/push-znvyqqxyvqwv"
             },
-            "time": "2024-12-12T09:28:34+00:00"
+            "time": "2025-07-22T10:56:56+00:00"
+        },
+        {
+            "name": "private-packagist/oidc-identities",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/packagist/oidc-identities.git",
+                "reference": "5f8f3c26a68568891b17fc8e328140178f2d0e98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/packagist/oidc-identities/zipball/5f8f3c26a68568891b17fc8e328140178f2d0e98",
+                "reference": "5f8f3c26a68568891b17fc8e328140178f2d0e98",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5 || ^8.0",
+                "php-http/client-common": "^1.9 || ^2.7",
+                "psr/log": "^1.0 || ^2.0 || ^3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.4",
+                "monolog/monolog": "^2",
+                "nyholm/psr7": "^1.8",
+                "php-http/mock-client": "^1.6",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan": "^1.11.8",
+                "phpstan/phpstan-deprecation-rules": "^1.2.0",
+                "phpstan/phpstan-phpunit": "^1.4.0",
+                "phpstan/phpstan-strict-rules": "^1.6.0",
+                "phpunit/phpunit": "^8.5",
+                "symfony/http-client": "^5.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PrivatePackagist\\OIDC\\Identities\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Create OIDC tokens on different platforms",
+            "keywords": [
+                "OpenID Connect",
+                "identities",
+                "oidc"
+            ],
+            "support": {
+                "issues": "https://github.com/packagist/oidc-identities/issues",
+                "source": "https://github.com/packagist/oidc-identities/tree/main"
+            },
+            "time": "2025-07-22T10:03:57+00:00"
         },
         {
             "name": "psr/container",
@@ -1726,13 +1782,16 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "private-packagist/api-client": 20,
+        "private-packagist/oidc-identities": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {},
     "platform-dev": {},
     "platform-overrides": {
-        "php": "7.2.15"
+        "php": "7.2.5"
     },
     "plugin-api-version": "2.6.0"
 }
