@@ -25,7 +25,7 @@ jobs:
             # Create your artifact file here
 
             - name: "Publish artifact"
-              uses: packagist/publish-artifact-github-action
+              uses: packagist/artifact-publish-github-action
               with:
                 package_name: 'acme/package'
                 organization_url_name: 'acme-org'
@@ -44,7 +44,7 @@ The `package_name` input parameter allows you to configure the name of the packa
 For example:
 
 ```yaml
-- uses: packagist/publish-artifact-github-action
+- uses: packagist/artifact-publish-github-action
   with:
     package_name: "acme/package"
 ```
@@ -56,7 +56,7 @@ The `organization_url_name` input parameter allows you to configure the Private 
 For example:
 
 ```yaml
-- uses: packagist/publish-artifact-github-action
+- uses: packagist/artifact-publish-github-action
   with:
     organization_url_name: "acme/org"
 ```
@@ -68,7 +68,7 @@ The `artifact` input parameter allows you to configure which artifact you would 
 For example:
 
 ```yaml
-- uses: packagist/publish-artifact-github-action
+- uses: packagist/artifact-publish-github-action
   with:
     artifact: '/full/path/to/artifact.zip'
 ```
@@ -80,7 +80,7 @@ The `private_packagist_url` input parameter allows you to configure the URL of y
 For example:
 
 ```yaml
-- uses: packagist/publish-artifact-github-action
+- uses: packagist/artifact-publish-github-action
   with:
     private_packagist_url: 'https://private-packagist-self-hosted.example'
 ```
