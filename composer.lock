@@ -698,12 +698,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/packagist/private-packagist-api-client.git",
-                "reference": "525bc00d1412043e42d2286b3f7020836a4f664b"
+                "reference": "1a7ff5400ab8343a01a14f39f1642c9fc04c8e76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/packagist/private-packagist-api-client/zipball/525bc00d1412043e42d2286b3f7020836a4f664b",
-                "reference": "525bc00d1412043e42d2286b3f7020836a4f664b",
+                "url": "https://api.github.com/repos/packagist/private-packagist-api-client/zipball/1a7ff5400ab8343a01a14f39f1642c9fc04c8e76",
+                "reference": "1a7ff5400ab8343a01a14f39f1642c9fc04c8e76",
                 "shasum": ""
             },
             "require": {
@@ -750,7 +750,7 @@
                 "issues": "https://github.com/packagist/private-packagist-api-client/issues",
                 "source": "https://github.com/packagist/private-packagist-api-client/tree/push-znvyqqxyvqwv"
             },
-            "time": "2025-07-22T10:56:56+00:00"
+            "time": "2025-07-24T08:19:39+00:00"
         },
         {
             "name": "private-packagist/oidc-identities",

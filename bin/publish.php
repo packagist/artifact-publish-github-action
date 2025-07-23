@@ -34,7 +34,7 @@ $client = new Client(null, $privatePackagistUrl, null, $logger);
 if (isset($_SERVER['PRIVATE_PACKAGIST_API_KEY']) && isset($_SERVER['PRIVATE_PACKAGIST_API_SECRET'])) {
     $client->authenticate($_SERVER['PRIVATE_PACKAGIST_API_KEY'], $_SERVER['PRIVATE_PACKAGIST_API_SECRET']);
 } else {
-    $client->authenticateWithTrustedPublishing($organizationUrlName);
+    $client->authenticateWithTrustedPublishing($organizationUrlName, $packageName);
 }
 
 try {
