@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05c202f9c82b9da842ce39addc3731ec",
+    "content-hash": "e0389c28239e781900aa37112cbd5075",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -694,16 +694,16 @@
         },
         {
             "name": "private-packagist/api-client",
-            "version": "dev-push-znvyqqxyvqwv",
+            "version": "1.39.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/packagist/private-packagist-api-client.git",
-                "reference": "1a7ff5400ab8343a01a14f39f1642c9fc04c8e76"
+                "reference": "451dd2e0703e02b0645688cc4608379c4496396b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/packagist/private-packagist-api-client/zipball/1a7ff5400ab8343a01a14f39f1642c9fc04c8e76",
-                "reference": "1a7ff5400ab8343a01a14f39f1642c9fc04c8e76",
+                "url": "https://api.github.com/repos/packagist/private-packagist-api-client/zipball/451dd2e0703e02b0645688cc4608379c4496396b",
+                "reference": "451dd2e0703e02b0645688cc4608379c4496396b",
                 "shasum": ""
             },
             "require": {
@@ -713,7 +713,7 @@
                 "php-http/client-common": "^1.9 || ^2.0",
                 "php-http/discovery": "^1.0",
                 "php-http/message-factory": "^1.0",
-                "private-packagist/oidc-identities": "dev-main",
+                "private-packagist/oidc-identities": "^1.0.1",
                 "psr/http-client-implementation": "^1.0",
                 "psr/http-message-implementation": "^1.0"
             },
@@ -748,22 +748,22 @@
             ],
             "support": {
                 "issues": "https://github.com/packagist/private-packagist-api-client/issues",
-                "source": "https://github.com/packagist/private-packagist-api-client/tree/push-znvyqqxyvqwv"
+                "source": "https://github.com/packagist/private-packagist-api-client/tree/1.39.0"
             },
-            "time": "2025-07-24T08:19:39+00:00"
+            "time": "2025-09-03T15:44:16+00:00"
         },
         {
             "name": "private-packagist/oidc-identities",
-            "version": "dev-main",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/packagist/oidc-identities.git",
-                "reference": "5f8f3c26a68568891b17fc8e328140178f2d0e98"
+                "reference": "b83f3c1c5ff84230a571e2e2552e2630ef22d098"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/packagist/oidc-identities/zipball/5f8f3c26a68568891b17fc8e328140178f2d0e98",
-                "reference": "5f8f3c26a68568891b17fc8e328140178f2d0e98",
+                "url": "https://api.github.com/repos/packagist/oidc-identities/zipball/b83f3c1c5ff84230a571e2e2552e2630ef22d098",
+                "reference": "b83f3c1c5ff84230a571e2e2552e2630ef22d098",
                 "shasum": ""
             },
             "require": {
@@ -784,7 +784,6 @@
                 "phpunit/phpunit": "^8.5",
                 "symfony/http-client": "^5.4"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -803,9 +802,9 @@
             ],
             "support": {
                 "issues": "https://github.com/packagist/oidc-identities/issues",
-                "source": "https://github.com/packagist/oidc-identities/tree/main"
+                "source": "https://github.com/packagist/oidc-identities/tree/1.0.1"
             },
-            "time": "2025-07-22T10:03:57+00:00"
+            "time": "2025-07-31T14:28:37+00:00"
         },
         {
             "name": "psr/container",
@@ -1457,7 +1456,7 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.32.0",
+            "version": "v1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
@@ -1520,7 +1519,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.32.0"
+                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.33.0"
             },
             "funding": [
                 {
@@ -1532,6 +1531,10 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                     "type": "tidelift"
                 }
@@ -1540,7 +1543,7 @@
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
-            "version": "v1.32.0",
+            "version": "v1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
@@ -1601,7 +1604,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.32.0"
+                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.33.0"
             },
             "funding": [
                 {
@@ -1613,6 +1616,10 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                     "type": "tidelift"
                 }
@@ -1621,7 +1628,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.32.0",
+            "version": "v1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -1682,7 +1689,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.32.0"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.33.0"
             },
             "funding": [
                 {
@@ -1694,6 +1701,10 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                     "type": "tidelift"
                 }
@@ -1702,7 +1713,7 @@
         },
         {
             "name": "symfony/polyfill-php73",
-            "version": "v1.32.0",
+            "version": "v1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php73.git",
@@ -1758,7 +1769,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php73/tree/v1.32.0"
+                "source": "https://github.com/symfony/polyfill-php73/tree/v1.33.0"
             },
             "funding": [
                 {
@@ -1770,6 +1781,10 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                     "type": "tidelift"
                 }
@@ -1778,7 +1793,7 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.32.0",
+            "version": "v1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
@@ -1838,7 +1853,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.32.0"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.33.0"
             },
             "funding": [
                 {
@@ -1847,6 +1862,10 @@
                 },
                 {
                     "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
                     "type": "github"
                 },
                 {
@@ -1943,10 +1962,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "private-packagist/api-client": 20,
-        "private-packagist/oidc-identities": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {},
