@@ -53,4 +53,5 @@ try {
     $client->packages()->createArtifactPackage([$response['id']]);
 } catch (HttpTransportException $e) {
     echo sprintf("Error when calling %s, status code: %s, message: %s\n", $e->getRequestUri(), $e->getCode(), $e->getMessage());
+    exit(1);
 }
