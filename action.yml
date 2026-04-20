@@ -22,7 +22,7 @@ runs:
   steps:
     - name: Store GITHUB_ACTION_PATH
       shell: "bash"
-      run: echo "ACTION_DIR=${GITHUB_ACTION_PATH}" >> $GITHUB_ENV
+      run: echo "ACTION_DIR=${GITHUB_ACTION_PATH}" >> $GITHUB_ENV # zizmor: ignore[github-env]
 
     - name: "Check if PHP is installed"
       shell: "bash"
@@ -30,8 +30,11 @@ runs:
 
     - name: "Validate PHP version"
       shell: "bash"
-      run: "${{ env.ACTION_DIR }}/bin/php_version_check.sh 7.2.5"
+      run: "${ACTION_DIR}/bin/php_version_check.sh 7.2.5"
       if: ${{ env.PHP_INSTALLED == 'yes' }}
+      env:
+        ACTION_DIR: ${{ env.ACTION_DIR }}
+
 
     - name: Install PHP
       uses: shivammathur/setup-php@ec406be512d7077f68eed36e63f4d91bc006edc4 # 2.35.4
@@ -46,4 +49,9 @@ runs:
 
     - name: Publish
       shell: "bash"
-      run: 'php ${{ env.ACTION_DIR }}/bin/publish.php "${{ inputs.package_name }}" "${{ inputs.artifact }}" "${{ inputs.organization_url_name }}" "${{ inputs.private_packagist_url }}"'
+      run: 'php ${ACTION_DIR}/bin/publish.php "${INPUTS_PACKAGE_NAME}" "${INPUTS_ARTIFACT}" "${INPUTS_ORGANIZATION_URL_NAME}" "${INPUTS_PRIVATE_PACKAGIST_URL}"'
+      env:
+        INPUTS_PACKAGE_NAME: ${{ inputs.package_name }}
+        INPUTS_ARTIFACT: ${{ inputs.artifact }}
+        INPUTS_ORGANIZATION_URL_NAME: ${{ inputs.organization_url_name }}
+        INPUTS_PRIVATE_PACKAGIST_URL: ${{ inputs.private_packagist_url }}
