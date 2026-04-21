@@ -43,7 +43,7 @@ runs:
         php-version: "8.4"
 
     - name: Install dependencies
-      uses: ramsey/composer-install@3cf229dc2919194e9e36783941438d17239e8520 # 3.1.1
+      uses: ramsey/composer-install@a8d0d959dab41457692a5e2041bd9b757a119e3f # 3.2.1
       with:
         working-directory: "${{ env.ACTION_DIR }}" # Cannot use ${GITHUB_ACTION_PATH} here because it resolves to the action dir of ramsey/composer-install
 
