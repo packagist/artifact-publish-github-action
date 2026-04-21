@@ -37,7 +37,7 @@ runs:
 
 
     - name: Install PHP
-      uses: shivammathur/setup-php@ec406be512d7077f68eed36e63f4d91bc006edc4 # 2.35.4
+      uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # 2.37.0
       if: ${{ env.PHP_INSTALLED == 'no' }}
       with:
         php-version: "8.4"
