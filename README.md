@@ -58,7 +58,7 @@ For example:
 ```yaml
 - uses: packagist/artifact-publish-github-action
   with:
-    organization_url_name: "acme/org"
+    organization_url_name: "acme-org"
 ```
 
 #### artifact (required)
