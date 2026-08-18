@@ -16,6 +16,7 @@ inputs:
     required: false
   artifact:
     description: Full path to the artifact file to publish.
+    required: true
 
 runs:
   using: "composite"

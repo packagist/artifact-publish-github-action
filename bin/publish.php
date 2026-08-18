@@ -47,8 +47,37 @@ if ('' !== $privatePackagistUrl) {
     }
 }
 
+// Everything the artifact argument is checked for, cheapest first so a malformed value never
+// reaches the filesystem.
+if ('' === $fileNameWithPath) {
+    throw new \InvalidArgumentException('No artifact given, expected the full path to the artifact file.');
+}
+
+// Keep this a plain filesystem path. A stream wrapper like phar:// passes the checks below but
+// reads its content from somewhere else entirely.
+if (preg_match('{^[a-z][a-z0-9+.-]*://}i', $fileNameWithPath)) {
+    throw new \InvalidArgumentException(sprintf('Invalid artifact "%s", expected a filesystem path without a stream wrapper.', $fileNameWithPath));
+}
+
+// The file name is sent as a request header, which cannot carry control characters.
+if (preg_match('{[\x00-\x1f\x7f]}', $fileName)) {
+    throw new \InvalidArgumentException(sprintf('Invalid artifact file name "%s", it must not contain control characters.', $fileName));
+}
+
 if (!file_exists($fileNameWithPath)) {
     throw new \RuntimeException('File not found: ' . $fileNameWithPath);
+}
+
+if (!is_file($fileNameWithPath)) {
+    throw new \RuntimeException('Not a file: ' . $fileNameWithPath);
+}
+
+if (!is_readable($fileNameWithPath)) {
+    throw new \RuntimeException('File not readable: ' . $fileNameWithPath);
+}
+
+if (0 === filesize($fileNameWithPath)) {
+    throw new \RuntimeException('File is empty: ' . $fileNameWithPath);
 }
 
 $logger = new Logger('trusted-publishing');
@@ -65,6 +94,10 @@ if (isset($_SERVER['PRIVATE_PACKAGIST_API_KEY']) && isset($_SERVER['PRIVATE_PACK
 
 try {
     $file = file_get_contents($fileNameWithPath);
+    if (false === $file) {
+        throw new \RuntimeException('Failed to read file: ' . $fileNameWithPath);
+    }
+
     $contentType = MimeTypes::getDefault()->guessMimeType($fileNameWithPath);
 
     try {
