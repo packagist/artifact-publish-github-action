@@ -21,6 +21,32 @@ $organizationUrlName = $argv[3];
 $privatePackagistUrl = $argv[4];
 $fileName = basename($fileNameWithPath);
 
+// The package and organization name are interpolated into the API request paths, so a value
+// outside these patterns would silently address a different endpoint.
+if (!preg_match('{^[a-z0-9]([_.-]?[a-z0-9]+)*/[a-z0-9](([_.]?|-{0,2})[a-z0-9]+)*$}iD', $packageName)) {
+    throw new \InvalidArgumentException(sprintf('Invalid package name "%s", expected a Composer package name in the form "vendor/name".', $packageName));
+}
+
+if (!preg_match('{^[a-z0-9-]+$}D', $organizationUrlName)) {
+    throw new \InvalidArgumentException(sprintf('Invalid organization URL name "%s", expected the URL name of your Private Packagist organization, which consists of lowercase letters, digits and dashes, e.g. "acme-org".', $organizationUrlName));
+}
+
+// An empty value keeps the API client's own default of https://packagist.com.
+if ('' !== $privatePackagistUrl) {
+    $url = parse_url($privatePackagistUrl);
+
+    if (false === $url || !isset($url['scheme'], $url['host']) || !in_array(strtolower($url['scheme']), ['http', 'https'], true)) {
+        throw new \InvalidArgumentException(sprintf('Invalid Private Packagist URL "%s", expected an absolute http or https URL, e.g. "https://packagist.com".', $privatePackagistUrl));
+    }
+
+    // The API client only applies scheme, host and port to its requests, everything else would
+    // be dropped without notice.
+    $hasPath = isset($url['path']) && '' !== $url['path'] && '/' !== $url['path'];
+    if ($hasPath || isset($url['query']) || isset($url['fragment']) || isset($url['user']) || isset($url['pass'])) {
+        throw new \InvalidArgumentException(sprintf('Invalid Private Packagist URL "%s", only the scheme, host and port are used, remove everything else.', $privatePackagistUrl));
+    }
+}
+
 if (!file_exists($fileNameWithPath)) {
     throw new \RuntimeException('File not found: ' . $fileNameWithPath);
 }
