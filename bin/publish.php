@@ -111,6 +111,11 @@ try {
     $response = $client->packages()->artifacts()->create($file, $contentType, $fileName);
     $client->packages()->createArtifactPackage([$response['id']]);
 } catch (HttpTransportException $e) {
+    if (404 === $e->getCode() && false !== strpos((string) $e->getRequestUri(), '/api/oidc/audience/')) {
+        echo "Your Private Packagist installation does not support organization specific OIDC audiences. Upgrade to 2.0.36 or newer.\n";
+        exit(1);
+    }
+
     echo sprintf("Error when calling %s, status code: %s, message: %s\n", $e->getRequestUri(), $e->getCode(), $e->getMessage());
     exit(1);
 }
