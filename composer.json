@@ -1,6 +1,6 @@
 {
     "require": {
-        "private-packagist/api-client": "^1.39.0",
+        "private-packagist/api-client": "^1.44.0",
         "private-packagist/oidc-identities": "^1.0.1",
         "nyholm/psr7": "^1.8",
         "symfony/http-client": "^5.4",
